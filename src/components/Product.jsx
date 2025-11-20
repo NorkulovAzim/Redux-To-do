@@ -15,66 +15,37 @@ const Product = () => {
 
   return (
     <div className="product-page">
-      <h1>
-        LIS-SKINS <img src={LisSkin} alt="" />
+      <h1 className="product-header">
+        LIS-SKINS <img src={LisSkin} alt="" className="logo" />
       </h1>
-      <p className="product-title">BUY CS2 SKINS HERE!</p>
+
+      <p className="product-title-1">BUY CS2 SKINS HERE!</p>
+
       <div className="cart-items">
         <strong>Selected skins: ({cart.length})</strong>
       </div>
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))",
-          gap: "20px",
-          marginTop: "20px",
-        }}
-      >
+
+      <div className="product-grid">
         {products.map((product) => (
-          <div
-            key={product.id}
-            style={{
-              border: "1px solid #ddd",
-              borderRadius: "8px",
-              padding: "15px",
-              textAlign: "center",
-            }}
-          >
-            <div
-              style={{
-                height: "150px",
-                backgroundColor: "#f0f0f0",
-                marginBottom: "10px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
+          <div key={product.id} className="product-card">
+            <div className="product-image-container">
               <img
                 src={product.image}
                 alt={product.name}
-                style={{
-                  maxWidth: "100%",
-                  maxHeight: "100%",
-                  objectFit: "contain",
-                }}
+                className="product-image"
               />
             </div>
+
             <h3>{product.name}</h3>
             <p>{product.description}</p>
+
             <p>
               <strong>${product.price}</strong>
             </p>
+
             <button
+              className="add-btn"
               onClick={() => handleAddToCart(product)}
-              style={{
-                backgroundColor: "#4CAF50",
-                color: "white",
-                border: "none",
-                padding: "8px 16px",
-                borderRadius: "4px",
-                cursor: "pointer",
-              }}
             >
               Add to Cart
             </button>

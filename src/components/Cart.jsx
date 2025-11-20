@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { selectCart, removeFromCart, clearCart } from "../store/productSlice";
 
+import LisSkins from "../assets/lis-skins.png";
 const Cart = () => {
   const cart = useSelector(selectCart);
   const dispatch = useDispatch();
@@ -18,9 +19,11 @@ const Cart = () => {
 
   if (cart.length === 0) {
     return (
-      <div style={{ padding: "20px", textAlign: "center" }}>
-        <h2>Your Cart</h2>
-        <p>Your cart is empty</p>
+      <div className="cart-empty">
+        <h2>
+          LIS-CART <img src={LisSkins} alt="" />
+        </h2>
+        <p>CART IS EMPTY...</p>
       </div>
     );
   }
@@ -35,7 +38,7 @@ const Cart = () => {
           marginBottom: "20px",
         }}
       >
-        <h2>Your Cart ({cart.length} items)</h2>
+        <h2 className="your-cart">Your Skins ( {cart.length} )</h2>
         <button
           onClick={handleClearCart}
           style={{
