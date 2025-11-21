@@ -39,7 +39,7 @@ const Profile = () => {
     <div className="profile-page">
       <h1 className="profile-title">
         <img src={LisImg} alt="" />
-        {profile.isLoggedIn ? "Welcome " + profile.username : "Login"}
+        {profile.isLoggedIn ? "Welcome, " + profile.username : "Login"}
       </h1>
 
       {!profile.isLoggedIn ? (
