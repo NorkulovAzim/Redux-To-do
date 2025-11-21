@@ -7,10 +7,15 @@ import LisSkin from "../assets/lis-skins.png";
 const Product = () => {
   const products = useSelector(selectProducts);
   const cart = useSelector(selectCart);
+  const profile = useSelector((state) => state.profile);
   const dispatch = useDispatch();
 
   const handleAddToCart = (product) => {
-    dispatch(addToCart(product));
+    if (profile.isLoggedIn) {
+      dispatch(addToCart(product));
+    } else {
+      alert("Please log in first");
+    }
   };
 
   return (
@@ -20,6 +25,12 @@ const Product = () => {
       </h1>
 
       <p className="product-title-1">BUY CS2 SKINS HERE!</p>
+
+      {!profile.isLoggedIn && (
+        <div className="login-first">
+          Please <a href="/profile">login</a> first.
+        </div>
+      )}
 
       <div className="cart-items">
         <strong>Selected skins: ({cart.length})</strong>
@@ -46,8 +57,14 @@ const Product = () => {
             <button
               className="add-btn"
               onClick={() => handleAddToCart(product)}
+              disabled={!profile.isLoggedIn}
+              style={
+                !profile.isLoggedIn
+                  ? { opacity: 0.5, cursor: "not-allowed" }
+                  : {}
+              }
             >
-              Add to Cart
+              {!profile.isLoggedIn ? "Log in to Add" : "Add to Cart"}
             </button>
           </div>
         ))}
