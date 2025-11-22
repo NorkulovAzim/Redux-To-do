@@ -39,7 +39,7 @@ const Profile = () => {
     <div className="profile-page">
       <h1 className="profile-title">
         <img src={LisImg} alt="" />
-        {profile.isLoggedIn ? "Welcome, " + profile.username : "Login"}
+        {profile.isLoggedIn ? "Welcome, " + profile.username : "Log In"}
       </h1>
 
       {!profile.isLoggedIn ? (
@@ -62,7 +62,9 @@ const Profile = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
-          <button class="button">Login</button>
+          <button className="button">
+            Login <i className="fa-brands fa-steam"></i>
+          </button>
         </form>
       ) : (
         <div>
@@ -85,12 +87,12 @@ const Profile = () => {
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
-            <button class="button" type="submit">
+            <button className="button" type="submit">
               Edit Profile
             </button>
           </form>
           <button
-            class="logout"
+            className="logout"
             onClick={handleLogout}
             style={{ marginTop: "1rem" }}
           >

@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { addToCart, selectProducts, selectCart } from "../store/productSlice";
 
 import LisSkin from "../assets/lis-skins.png";
+import { NavLink } from "react-router-dom";
 
 const Product = () => {
   const products = useSelector(selectProducts);
@@ -28,7 +29,8 @@ const Product = () => {
 
       {!profile.isLoggedIn && (
         <div className="login-first">
-          Please <a href="/profile">login</a> first.
+          <i className="fa-solid fa-arrow-right"></i>
+          Please, <NavLink to="/profile">Login</NavLink> to buy skins.
         </div>
       )}
 
