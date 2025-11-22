@@ -66,7 +66,7 @@ const Product = () => {
                   : {}
               }
             >
-              {!profile.isLoggedIn ? "Log in to Add" : "Add to Cart"}
+              {!profile.isLoggedIn ? "Log in to Buy" : "Add to Cart"}
             </button>
           </div>
         ))}
